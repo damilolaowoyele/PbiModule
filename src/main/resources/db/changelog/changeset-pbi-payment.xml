@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="pbi-payment-001" author="admin">
+        <createTable tableName="pbi_payment">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="employee_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lga" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="designation" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="days_selected" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="days_worked" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transport_per_day" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="previous_travel_allowance" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_transport" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_persons_vaccinated" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_vaccinations" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost_per_vaccination" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_pbi" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_internet_cost" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_number" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
