@@ -44,33 +44,27 @@
             <column name="designation" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="new_intake" type="boolean">
-                <constraints nullable="false"/>
-            </column>
-            <column name="previous_experience" type="boolean">
-                <constraints nullable="false"/>
-            </column>
-            <column name="qualification" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="new_intake" type="boolean" />
+            <column name="previous_experience" type="boolean" />
+            <column name="qualification" type="varchar(100)" />
             <column name="phone_number" type="varchar(20)">
                 <constraints nullable="false"/>
             </column>
-            <column name="internet_phone_number" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="government_employee" type="boolean">
-                <constraints nullable="false"/>
-            </column>
+            <column name="internet_phone_number" type="varchar(20)" />
+            <column name="government_employee" type="boolean" />
             <column name="email_address" type="varchar(255)" />
-            <column name="home_address" type="varchar(255)" />
+            <column name="home_address" type="varchar(255)" >
+                <constraints nullable="false"/>
+            </column>
             <column name="account_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="bank" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="account_number" type="varchar(10)" />
+            <column name="account_number" type="varchar(10)" >
+                <constraints nullable="false"/>
+            </column>
             <column name="means_of_identification" type="varchar(50)" />
             <column name="id_number" type="varchar(50)" />
             <column name="sort_code" type="varchar(50)" />

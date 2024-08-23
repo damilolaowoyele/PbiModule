@@ -21,10 +21,4 @@ public interface PaymentSettingRepository extends JpaRepository<PaymentSetting, 
     }
 }
 
-//@Repository
-//public interface PaymentSettingRepository extends JpaRepository<PaymentSetting, UUID> {
-//    default Optional<PaymentSetting> getFixedCost() {
-//        return findAll().stream().findFirst();
-//    }
-//}
 

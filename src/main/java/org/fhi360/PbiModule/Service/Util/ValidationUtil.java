@@ -16,12 +16,4 @@ public class ValidationUtil {
             throw new RuntimeException("Validation failed: " + errorMessage);
         }
     }
-
-
-//    public static <T> void validate(T object, Validator validator) {
-//        Set<ConstraintViolation<T>> violations = validator.validate(object);
-//        if (!violations.isEmpty()) {
-//            throw new RuntimeException("Validation failed for " + object.getClass().getSimpleName());
-//        }
-//    }
 }

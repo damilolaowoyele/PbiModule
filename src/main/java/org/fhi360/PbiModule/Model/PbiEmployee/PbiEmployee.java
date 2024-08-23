@@ -116,7 +116,7 @@ public class PbiEmployee {
     private String emailAddress;
 
     @Size(max = 255, message = "Home address must be at most 255 characters")
-    @Column(name = "home_address", length = 255)
+    @Column(name = "home_address", length = 255, nullable = false)
     private String homeAddress;
 
     @NotBlank(message = "Account name is required")
@@ -130,7 +130,7 @@ public class PbiEmployee {
     private String bank;
 
     @Pattern(regexp = "^[0-9]{10}$", message = "Account number must be 10 digits")
-    @Column(name = "account_number")
+    @Column(name = "account_number", nullable = false)
     private String accountNumber;
 
     @Size(max = 50, message = "Means of identification must be at most 50 characters")

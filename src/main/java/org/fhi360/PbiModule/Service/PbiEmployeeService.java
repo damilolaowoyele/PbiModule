@@ -45,8 +45,6 @@ public class PbiEmployeeService {
                 List<PbiEmployee> exactMatches = pbiEmployeeRepository.findByIdNumberOrPhoneNumberOrAccountNumber(
                         pbiEmployee.getIdNumber(), pbiEmployee.getPhoneNumber(), pbiEmployee.getAccountNumber());
                 if (!exactMatches.isEmpty()) {
-//                    response.put("errors", List.of("User already registered: " + exactMatches.get(0).getFirstName() + " " + exactMatches.get(0).getLastName()));
-//                    return response;
                     throw new RuntimeException("User already registered: " + exactMatches.get(0).getFirstName() + " " + exactMatches.get(0).getLastName());
                 }
 
@@ -74,8 +72,6 @@ public class PbiEmployeeService {
             response.put("employee", savedEmployee);
 
         } catch (RuntimeException e) {
-//            errors.add(e.getMessage());
-//            response.put("errors", errors);
             throw new RuntimeException(e.getMessage());
         }
 
@@ -132,36 +128,6 @@ public class PbiEmployeeService {
     }
 
 
-//    public List<PbiEmployee> importCsvFile(MultipartFile file) throws Exception {
-//        try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-//            CsvToBean<PbiEmployee> csvToBean = new CsvToBeanBuilder<PbiEmployee>(reader)
-//                    .withType(PbiEmployee.class)
-//                    .withIgnoreLeadingWhiteSpace(true)
-//                    .build();
-//
-//            List<PbiEmployee> pbiEmployees = csvToBean.parse();
-//            List<PbiEmployee> validEmployees = new ArrayList<>();
-//            List<String> errors = new ArrayList<>();
-//
-//            for (PbiEmployee employee : pbiEmployees) {
-//                try {
-//                    ValidationUtil.validate(employee, validator);
-//                    validEmployees.add(employee);
-//                } catch (RuntimeException e) {
-//                    errors.add("Row " + (pbiEmployees.indexOf(employee) + 1) + ": " + e.getMessage());
-//                }
-//            }
-//
-//            if (!errors.isEmpty()) {
-//                throw new RuntimeException("Validation errors occurred:\n" + String.join("\n", errors));
-//            }
-//
-//            return pbiEmployeeRepository.saveAll(validEmployees);
-//        }
-//    }
-
-
-
     public Page<PbiEmployee> getPbiEmployees(Pageable pageable, String searchText, String sortBy, String sortDirection,
                                              String state, String lga, String facility, String status) {
         Specification<PbiEmployee> spec = createSearchSpecification(searchText);
@@ -179,7 +145,6 @@ public class PbiEmployeeService {
         }
 
         if (status != null && !status.isEmpty()) {
-//            spec = spec.and((root, query, cb) -> cb.equal(root.get("status"), status));
             if (status.equals("Duplicates")) {
                 spec = spec.and((root, query, cb) -> cb.isTrue(root.get("suspectedDuplicate")));
             } else {
@@ -233,7 +198,6 @@ public class PbiEmployeeService {
 
 
     public List<PbiEmployee> getAllPbiEmployees() {
-//        return pbiEmployeeRepository.findAll();
         return pbiEmployeeRepository.findAllByOrderByCreatedDateDesc();
     }
 

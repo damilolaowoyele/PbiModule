@@ -34,7 +34,7 @@ public class PaymentCalculationService {
 
     @Transactional(readOnly = true)
     public Page<PbiPayment> calculatePayments(LocalDate fromDate, LocalDate toDate, String searchTerm, String state, String lga, String facility, String teamType, Pageable pageable) {
-//        Specification<PbiEmployee> spec = Specification.where(null);
+
         Specification<PbiEmployee> spec = Specification.where((root, query, cb) ->
                 cb.or(
                         cb.notEqual(root.get("status"), "Inactive"),
@@ -60,16 +60,7 @@ public class PaymentCalculationService {
             }
         }
 
-//        if (searchTerm != null && !searchTerm.isEmpty()) {
-//            spec = spec.and((root, query, cb) ->
-//                    cb.or(
-//                            cb.like(cb.lower(root.get("firstName")), "%" + searchTerm.toLowerCase() + "%"),
-//                            cb.like(cb.lower(root.get("lastName")), "%" + searchTerm.toLowerCase() + "%"),
-//                            cb.like(cb.lower(root.get("accountNumber")), "%" + searchTerm.toLowerCase() + "%"),
-//                            cb.like(cb.lower(root.get("accountName")), "%" + searchTerm.toLowerCase() + "%")
-//                    )
-//            );
-//        }
+
 
         if (state != null && !state.isEmpty()) {
             spec = spec.and((root, query, cb) -> cb.equal(root.get("state"), state));
@@ -99,10 +90,6 @@ public class PaymentCalculationService {
                 })
                 .collect(Collectors.toList());
 
-//        List<PbiPayment> payments = employeesPage.getContent().stream()
-//                .map(employee -> calculateEmployeePayment(employee, fromDate, toDate, paymentSetting))
-//                .collect(Collectors.toList());
-
         return new PageImpl<>(payments, pageable, employeesPage.getTotalElements());
     }
 
@@ -131,9 +118,7 @@ public class PaymentCalculationService {
         BigDecimal total = totalTransport.add(totalPbi).add(totalInternetCost).subtract(previousTravelAdvance);
 
 
-
         PbiPayment pbiPayment = new PbiPayment();
-//        pbiPayment.setEmployeeId(employee.getId());
         pbiPayment.setFirstName(employee.getFirstName());
         pbiPayment.setLastName(employee.getLastName());
         pbiPayment.setState(employee.getState());
@@ -199,12 +184,6 @@ public class PaymentCalculationService {
             // Write headers
             csvWriter.append(String.join(",", headers));
             csvWriter.append("\n");
-
-//            // Write data
-//            for (PbiPayment payment : payments) {
-//                csvWriter.append(createCsvLine(payment));
-//                csvWriter.append("\n");
-//            }
 
 
             // Write data

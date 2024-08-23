@@ -16,7 +16,6 @@ public class RoutineVaccinationService {
     private final RoutineVaccinationRepository repository;
 
     public List<RoutineVaccination> getVaccinationsByTeam(String team) {
-//        return repository.findByTeam(team);
         return repository.findByTeamIgnoreCase(team);
     }
 

@@ -23,4 +23,21 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="payment-setting-002" author="admin">
+        <insert tableName="payment_setting">
+            <column name="id" valueComputed="uuid_generate_v4()"/>
+            <column name="cost_per_immunization" value="200"/>
+            <column name="daily_transport_cost" value="3000"/>
+            <column name="weekly_internet_cost" value="1500"/>
+            <column name="team_type" value="mobile"/>
+        </insert>
+        <insert tableName="payment_setting">
+            <column name="id" valueComputed="uuid_generate_v4()"/>
+            <column name="cost_per_immunization" value="200"/>
+            <column name="daily_transport_cost" value="1500"/>
+            <column name="weekly_internet_cost" value="1500"/>
+            <column name="team_type" value="facility"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
