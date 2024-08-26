@@ -6,7 +6,7 @@
 
     <changeSet id="pbi-employee-inactivity-001" author="admin">
         <createTable tableName="pbi_employee_inactivity">
-            <column name="id" type="UUID">
+            <column name="id" type="UUID" defaultValueComputed="uuid_generate_v4()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="employee_id" type="UUID">

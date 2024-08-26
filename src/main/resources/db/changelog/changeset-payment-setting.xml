@@ -6,7 +6,7 @@
 
     <changeSet id="payment-setting-001" author="admin">
         <createTable tableName="payment_setting">
-            <column name="id" type="UUID">
+            <column name="id" type="UUID" defaultValueComputed="uuid_generate_v4()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="cost_per_immunization" type="DECIMAL(19, 2)">
