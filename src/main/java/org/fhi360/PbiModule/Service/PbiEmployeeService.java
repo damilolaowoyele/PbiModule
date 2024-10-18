@@ -112,6 +112,8 @@ public class PbiEmployeeService {
 
             for (PbiEmployee employee : pbiEmployees) {
                 try {
+                    // Remove trailing spaces from all string fields using reflection
+                    removeTrailingSpaces(employee);
                     ValidationUtil.validate(employee, validator);
                     validEmployees.add(employee);
                 } catch (RuntimeException e) {
@@ -124,6 +126,23 @@ public class PbiEmployeeService {
             }
 
             return pbiEmployeeRepository.saveAll(validEmployees);
+        }
+    }
+
+    private void removeTrailingSpaces(PbiEmployee employee) {
+        Field[] fields = PbiEmployee.class.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getType().equals(String.class)) {
+                field.setAccessible(true);
+                try {
+                    String value = (String) field.get(employee);
+                    if (value != null) {
+                        field.set(employee, value.stripTrailing());
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Failed to access field: " + field.getName(), e);
+                }
+            }
         }
     }
 

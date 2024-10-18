@@ -103,9 +103,10 @@ public class PbiEmployee {
     private String phoneNumber;
 
 //    @NotBlank(message = "Internet phone number is required")
-    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Invalid internet phone number format")
+//    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Invalid internet phone number format")
+    @Pattern(regexp = "^\\+?[0-9]{10,15}$|^$", message = "Invalid internet phone number format")
 //    @Pattern(regexp = "((^\\+)(234){1}[0-9]{10})|((^234)[0-9]{10})|((^0)(7|8|9){1}(0|1){1}[0-9]{8})\n", message = "Invalid Nigerian mobile phone number format")
-    @Column(name = "internet_phone_number", nullable = false)
+    @Column(name = "internet_phone_number", nullable = true)
     private String internetPhoneNumber;
 
     @Column(name = "government_employee", nullable = false)
